@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import { FormControl, FormGroup, Input, InputLabel, Typography, styled, Button} from '@mui/material';
 import { addUser } from '../services/api';
 import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 
 const Container=styled(FormGroup)`
@@ -33,8 +34,18 @@ const AddUser = () => {
     }
 
     const addUserDetails = async () => {
+        if (user.name===""||user.email===""||user.username===""||user.phone===""){
+            Swal.fire("All fields are mandatory");
+
+        }
+        else if(isNaN(user.phone)){
+            Swal.fire("Only enter number for Phone");
+
+        }
+        else {
         await addUser(user);
         navigate('/all');
+        }
     }
 
     return (

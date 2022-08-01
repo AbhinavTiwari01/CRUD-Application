@@ -5,7 +5,7 @@ import MyCrudApplication from "./Components/MyCrudApplication";
 import NavBar from "./Components/NavBar";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import EditUser from "./Components/EditUser";
-
+import './App.css';
 
 function App() {
   return (

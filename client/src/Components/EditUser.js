@@ -2,6 +2,8 @@ import React, { useState , useEffect} from 'react';
 import { FormControl, FormGroup, Input, InputLabel, Typography, styled, Button} from '@mui/material';
 import { editUser, getUser } from '../services/api';
 import { useNavigate, useParams} from 'react-router-dom';
+import Swal from 'sweetalert2';
+
 
 
 const Container=styled(FormGroup)`
@@ -47,8 +49,18 @@ const EditUser = () => {
     }
 
     const editUserDetails = async () => {
+        if (user.name===""||user.email===""||user.username===""||user.phone===""){
+            Swal.fire("All fields are mandatory");
+
+        }
+        else if(isNaN(user.phone)){
+            Swal.fire("Only enter number for Phone");
+
+        }
+        else {
         await editUser(user, id);
         navigate('/all');
+        }
     }
 
     return (
