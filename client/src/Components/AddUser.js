@@ -16,7 +16,7 @@ const defaultValues = {
     name : "",
     username : "",
     email : "",
-    phone : null
+    phone : ""
 }
 
 const AddUser = () => {
